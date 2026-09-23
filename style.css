@@ -372,6 +372,13 @@ main {
   font-size: 12px;
   color: var(--ink-soft);
 }
+#bookForm button:hover {
+  transform: scale(1.03);
+}
+
+#searchInput:focus {
+  outline: 2px solid #2a5298;
+}
 
 /* ---------- Responsive ---------- */
 @media (max-width: 820px) {
