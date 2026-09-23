@@ -228,9 +228,14 @@ modalConfirm.addEventListener("click", () => {
 });
 
 issueModal.addEventListener("click", e => {
-  if (e.target === issueModal) closeIssueModal();
+  if (e.target === issueModal) {
+    const confirmed = confirm("Close the issue window?");
+    
+    if (confirmed) {
+      closeIssueModal();
+    }
+  }
 });
-
 // ---- Search & filter ----
 searchInput.addEventListener("input", render);
 statusFilter.addEventListener("change", render);
