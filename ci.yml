@@ -1,0 +1,40 @@
+name: Library Book Record CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    name: Build and Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check required files
+        run: |
+          test -f index.html
+          test -f style.css
+          test -f script.js
+
+      - name: Check HTML file
+        run: |
+          grep -q "<html" index.html
+          grep -q "</html>" index.html
+
+      - name: Check CSS file
+        run: |
+          grep -q "body" style.css
+
+      - name: Check JavaScript file
+        run: |
+          grep -q "localStorage" script.js
+
+      - name: CI checks completed
+        run: echo "All Library Book Record checks passed successfully."
